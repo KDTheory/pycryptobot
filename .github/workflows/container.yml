@@ -3,7 +3,7 @@ name: Container
 on:
   push:
     # Publish `main` as Docker `latest` image.
-    branches:
+    branches-ignore:
       - main
       - docker
 
@@ -52,7 +52,7 @@ jobs:
 
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
-          
+
           # Build and Publish container image
           docker buildx build --push \
           --tag $IMAGE_ID:$VERSION \
